@@ -33,7 +33,7 @@ namespace BinaryKits.Zpl.Viewer.CommandAnalyzers
             }
             if (zplDataParts.Length > 3)
             {
-                switch (zplDataParts[3])
+                switch (zplDataParts[3].Trim())
                 {
                     case "C":
                         textJustification = TextJustification.Center;

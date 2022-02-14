@@ -51,7 +51,8 @@ namespace BinaryKits.Zpl.Viewer
                 new LabelHomeZplCommandAnalyzer(this._virtualPrinter),
                 new QrCodeBarcodeZplCommandAnalyzer(this._virtualPrinter),
                 new RecallGraphicZplCommandAnalyzer(this._virtualPrinter),
-                new ScalableBitmappedFontZplCommandAnalyzer(this._virtualPrinter)
+                new ScalableBitmappedFontZplCommandAnalyzer(this._virtualPrinter),
+                new CodeEan13BarcodeZplCommandAnalyzer(this._virtualPrinter)
             };
 
             var labelInfos = new List<LabelInfo>();

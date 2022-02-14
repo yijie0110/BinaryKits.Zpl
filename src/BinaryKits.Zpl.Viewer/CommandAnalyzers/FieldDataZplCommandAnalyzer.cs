@@ -37,6 +37,10 @@ namespace BinaryKits.Zpl.Viewer.CommandAnalyzers
                 {
                     return new ZplBarcode128(text, x, y, code128.Height, moduleWidth, wideBarToNarrowBarWidthRatio, code128.FieldOrientation, code128.PrintInterpretationLine, code128.PrintInterpretationLineAboveCode, bottomToTop);
                 }
+                if (this.VirtualPrinter.NextElementFieldData is CodeEan13BarcodeFieldData code13)
+                {
+                    return new ZplBarcodeEan13(text.Trim(), x, y, code13.Height, moduleWidth, wideBarToNarrowBarWidthRatio, code13.FieldOrientation, code13.PrintInterpretationLine, code13.PrintInterpretationLineAboveCode, bottomToTop);
+                }
                 if (this.VirtualPrinter.NextElementFieldData is Interleaved2of5BarcodeFieldData interleaved2of5)
                 {
                     return new ZplBarcodeInterleaved2of5(text, x, y, interleaved2of5.Height, moduleWidth, wideBarToNarrowBarWidthRatio, interleaved2of5.FieldOrientation, interleaved2of5.PrintInterpretationLine, interleaved2of5.PrintInterpretationLineAboveCode, bottomToTop: bottomToTop);
@@ -68,7 +72,7 @@ namespace BinaryKits.Zpl.Viewer.CommandAnalyzers
                 var textJustification = this.VirtualPrinter.NextElementFieldBlock.TextJustification;
                 var lineSpace = this.VirtualPrinter.NextElementFieldBlock.AddOrDeleteSpaceBetweenLines;
 
-                return new ZplFieldBlock(text, x, y, width, font, maxLineCount, lineSpace, textJustification);
+                return new ZplFieldBlock(text, x, y, width, font, maxLineCount, lineSpace, textJustification, bottomToTop: bottomToTop);
             }
 
             return new ZplTextField(text, x, y, font, reversePrint: reversePrint, bottomToTop: bottomToTop);

@@ -1,4 +1,5 @@
-﻿using BinaryKits.Zpl.Label.Elements;
+﻿using BinaryKits.Zpl.Label;
+using BinaryKits.Zpl.Label.Elements;
 using SkiaSharp;
 
 namespace BinaryKits.Zpl.Viewer.ElementDrawers
@@ -60,7 +61,7 @@ namespace BinaryKits.Zpl.Viewer.ElementDrawers
 
                 if (textField.FieldTypeset != null)
                 {
-                    y -= textBounds.Height;
+                    y -= font.FontHeight;
                 }
 
                 using (new SKAutoCanvasRestore(this._skCanvas))
@@ -96,18 +97,18 @@ namespace BinaryKits.Zpl.Viewer.ElementDrawers
                         {
                             case Label.FieldOrientation.Rotated90:
                                 matrix = SKMatrix.CreateRotationDegrees(90, x, y);
-                                x += textBoundBaseline.Height;
+                                x += font.FontHeight;
                                 break;
                             case Label.FieldOrientation.Rotated180:
                                 matrix = SKMatrix.CreateRotationDegrees(180, x, y);
-                                y -= textBoundBaseline.Height;
+                                y -= font.FontHeight;
                                 break;
                             case Label.FieldOrientation.Rotated270:
                                 matrix = SKMatrix.CreateRotationDegrees(270, x, y);
-                                x -= textBoundBaseline.Height;
+                                x -= font.FontHeight;
                                 break;
                             case Label.FieldOrientation.Normal:
-                                y += textBoundBaseline.Height;
+                                y += font.FontHeight;
                                 break;
                         }
                     }
